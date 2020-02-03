@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Enquiry</title>
+		<meta charset="UTF-8">
+		<link th:href="@{/main.css}" type="text/css" rel="stylesheet">
+		<script th:src="@{/jquery-3.4.1.min.js}"></script>
+	</head>
+	<body>
+		
+		<div th:insert="menu"></div>
+		
+		<div class="main">
+			<div th:insert="header"></div>
+			<form th:action="@{/save-enquiry}" th:object="${enquiryCmd}">
+				<table border="1" width="90%" align="center" cellpadding="5">
+					<tr>
+						<td class="fheading" colspan="3">Enquiry Form</td>
+					</tr>
+			</table>
+			</form>
+		</div>
+	</body>
+</html>
