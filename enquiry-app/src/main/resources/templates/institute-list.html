@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Enquiry Source</title>
+		<meta charset="UTF-8">
+		<link th:href="@{/main.css}" type="text/css" rel="stylesheet">
+		<script th:src="@{/jquery-3.4.1.min.js}"></script>
+	</head>
+	<body>
+		
+		<div th:insert="menu"></div>
+		
+		<div class="main">
+			<div th:insert="header"></div>
+			<h1>Institute List</h1>
+				<br/>
+				<table border="1" width="90%" align="center" cellpadding="5">
+				<tr>
+					<th>SR</th>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>PHONE</th>
+					<th>EMAIL</th>
+					<th>CITY</th>
+					<th>ACTION</th>
+				</tr>
+				<!-- This code works if we use findAll() but that calls SELECT Query as many records in the table, so to avoid we have implemented instituteDto and new method in instituteRepository -->
+				<!-- This is done by using projection interface mechanism -->
+				<!-- <tr th:each="ins, itr: ${instList}">
+					<td th:text="${itr.count}">SR</td>
+					<td th:text="${ins.instituteId}">ID</td>
+					<td th:text="${ins.name}">NAME</td>
+					<td th:text="${ins.contact.phone}">PHONE</td>
+					<td th:text="${ins.contact.email}">EMAIL</td>
+					<td th:text="${ins.contact.permanentAddress.city}">CITY</td>
+					<td><a th:href="@{'/ins-edit/'+${ins.instituteId}}">Edit</a> | 
+						<a th:href="@{'/ins-delete/'+${ins.instituteId}}">Delete</a></td>
+				</tr> -->
+				
+				<tr th:each="ins, itr: ${instList}">
+					<td th:text="${itr.count}">SR</td>
+					<td th:text="${ins.instituteId}">ID</td>
+					<td th:text="${ins.name}">NAME</td>
+					<td th:text="${ins.phone}">PHONE</td>
+					<td th:text="${ins.email}">EMAIL</td>
+					<td th:text="${ins.city}">CITY</td>
+					<td><a th:href="@{'/ins-edit/'+${ins.instituteId}}">Edit</a> | 
+						<a th:href="@{'/ins-delete/'+${ins.instituteId}}">Delete</a></td>
+				</tr>
+				
+			</table>
+		</div>
+	</body>
+</html>
